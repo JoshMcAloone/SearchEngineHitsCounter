@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="search-container">
+        <h2>Search Engine Hit Counter</h2>
+        <form [formGroup]="formGroup">
+            <input type="text" placeholder="Search..." name="search" formControlName="search">
+            <button type="submit" [disabled]="formGroup.invalid" (click)="doSearch()"><i class="fa fa-search"></i></button>
+            <div *ngIf="formGroup.get('search').invalid && formGroup.get('search').errors && (formGroup.get('search').dirty || formGroup.get('search').touched)">
+                <small class="text-danger" *ngIf="formGroup.get('search').hasError('required')">
+                    This field is required.
+                </small>
+                <small class="text-danger" *ngIf="formGroup.get('search').hasError('maxlength')">
+                    The maximum length for this field is {{formGroup.get('search').errors.maxlength.requiredLength}} characters.
+                </small>
+            </div>
+        </form>
+        <div class="results-container">
+            <div *ngIf="!searchInProgress && searchResults">
+                <p>Results for: {{latestSearchText}}</p>
+                <table>
+                    <tr>
+                        <th>Search Engine</th>
+                        <th>Number of Hits</th>
+                    </tr>
+                    <tr *ngFor="let result of searchResults">
+                        <td>{{result.searchEngineName}}</td>
+                        <td>{{result.numberOfHits}}</td>
+                    </tr>
+                </table>
+            </div>
+            <mat-spinner *ngIf="searchInProgress" class="spinner"></mat-spinner>
+        </div>
+    </div>
+</div>

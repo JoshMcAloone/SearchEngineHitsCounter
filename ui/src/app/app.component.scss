@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.search-container {
+    input[type=text] {
+        padding: 6px;
+        margin-top: 8px;
+        font-size: 17px;
+    }
+
+    button {
+        padding: 6px 10px;
+        margin-top: 8px;
+        margin-right: 16px;
+        font-size: 17px;
+        cursor: pointer;
+    }
+}
+
+.results-container {
+    padding-top: 6px;
+    width: 320px;
+
+    th, td {
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    .spinner {
+        left: 20%;
+    }
+}
+
+.text-danger {
+    color: red;
+}
